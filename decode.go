@@ -39,10 +39,10 @@ func Decode(reader io.ReadSeeker) (image.Image, string, error) {
 }
 
 func getOrientation(reader io.Reader) string {
-	x, err := exif.Decode(reader)
-	if err != nil {
-		return "1"
-	}
+	x, _ := exif.Decode(reader)
+	// if err != nil {
+	// 	return "1"
+	// }
 	if x != nil {
 		orient, err := x.Get(exif.Orientation)
 		if err != nil {
